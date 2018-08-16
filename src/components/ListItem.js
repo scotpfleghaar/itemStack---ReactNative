@@ -5,9 +5,21 @@ import {connect} from 'react-redux';
 import * as actions from '../actions';
 
 class ListItem extends Component {
+    renderDescription = () => {
+        const {id, description} = this.props.library.item;
+        const shouldExpand = String(id) === String(this.props.selectedLibraryId);
+        if (shouldExpand) {
+            return (
+                <Text>{description}</Text>
+            )
+        } else {
+
+        }
+    };
+
     render() {
         const {titleStyle} = styles;
-        const {id, title} = this.props.library.item;
+        const {title, id} = this.props.library.item;
         return (
             <TouchableWithoutFeedback
                 onPress={() => {
@@ -17,6 +29,7 @@ class ListItem extends Component {
                     <CardSection>
                         <Text style={titleStyle}>{title}</Text>
                     </CardSection>
+                    {this.renderDescription()}
                 </View>
             </TouchableWithoutFeedback>
         )
@@ -30,5 +43,11 @@ const styles = StyleSheet.create({
     }
 });
 
+const mapStateToProps = (state) => {
+    return {
+        selectedLibraryId: state.selectedLibraryId
+    }
+};
 
-export default connect(null, actions)(ListItem);
+
+export default connect(mapStateToProps, actions)(ListItem);
