@@ -6,7 +6,7 @@ import {Text, View, StyleSheet} from 'react-native';
 const Header = (props) => {
     return (
         <View style={styles.container}>
-            <Text style={styles.header}>{props.headerText}</Text>
+            {/*<Text style={styles.header}>{props.headerText}</Text>*/}
         </View>
     )
 };
@@ -14,13 +14,13 @@ const Header = (props) => {
 const styles = StyleSheet.create({
     //Styles are camelCased rather than dash-cased
     container: {
-        // flex: 1,
+        flex: 1,
         justifyContent: 'center',
         alignItems: 'center',
         backgroundColor: '#fcfcfc',
         paddingTop: 30,
         paddingBottom: 10,
-        height: 70,
+        height: 10,
         shadowColor: '#ccc',
         shadowOffset: {width: 0, height: 5},
         shadowOpacity: 0.2,
