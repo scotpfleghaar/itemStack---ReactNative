@@ -12,8 +12,8 @@ class LibraryList extends Component {
         return (
             <FlatList
                 data={this.props.libraries}
-                renderItem={this.renderItem}
-                keyExtractor={(library) => library.id}
+                renderItem={LibraryList.renderItem}
+                keyExtractor={(library) => String(library.id)}
             />
         )
     }
