@@ -1,10 +1,19 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
-import {Text} from 'react-native';
+import {Text, FlatList} from 'react-native';
+
 class LibraryList extends Component {
+    renderItem(library) {
+
+    }
+
     render() {
         return (
-            <Text>Hello!</Text>
+            <FlatList
+                data={this.props.libraries}
+                renderItem={this.renderItem}
+                keyExtractor={(library) => library.id}
+            />
         )
     }
 }
