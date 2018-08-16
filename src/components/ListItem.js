@@ -6,14 +6,11 @@ import * as actions from '../actions';
 
 class ListItem extends Component {
     renderDescription = () => {
-        const {id, description} = this.props.library.item;
-        const shouldExpand = String(id) === String(this.props.selectedLibraryId);
-        if (shouldExpand) {
+        const {description} = this.props.library.item;
+        if (this.props.isExpanded) {
             return (
                 <Text>{description}</Text>
             )
-        } else {
-
         }
     };
 
@@ -43,9 +40,9 @@ const styles = StyleSheet.create({
     }
 });
 
-const mapStateToProps = (state) => {
+const mapStateToProps = (state, ownProps) => {
     return {
-        selectedLibraryId: state.selectedLibraryId
+        isExpanded: state.selectedLibraryId === ownProps.library.item.id
     }
 };
 
