@@ -1,15 +1,21 @@
 import React, {Component} from 'react';
-import {StyleSheet, Text, TouchableWithoutFeedback, View} from 'react-native';
+import {StyleSheet, Text, TouchableWithoutFeedback, View, LayoutAnimation} from 'react-native';
 import {CardSection} from "./common";
 import {connect} from 'react-redux';
 import * as actions from '../actions';
 
 class ListItem extends Component {
+    componentWillUpdate(){
+        LayoutAnimation.easeInEaseOut();
+    }
+
     renderDescription = () => {
         const {description} = this.props.library.item;
         if (this.props.isExpanded) {
             return (
-                <Text>{description}</Text>
+                <CardSection>
+                    <Text style={{backgroundColor: '#fff'}}>{description}</Text>
+                </CardSection>
             )
         }
     };
